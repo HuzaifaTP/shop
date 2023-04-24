@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ShopService {
@@ -12,8 +13,8 @@ public class ShopService {
     @Autowired
     private ShopRepository shopRepository;
 
-    public Shop getShopById(Long id){
-        return shopRepository.findById(id).orElse(null);
+    public Optional<Shop> getShopById(Long id){
+        return shopRepository.findById(id);
     }
     public List<Shop> getAllShops(){
         return shopRepository.findAll();

@@ -10,16 +10,17 @@ import java.util.Optional;
 
 public interface ShopRepository extends JpaRepository<Shop, Long> {
 
-    @Query("SELECT s FROM Shop s WHERE s.id = ?1")
+    @Query("SELECT shop FROM Shop shop WHERE shop.id = ?1")
     @NonNull
     Optional<Shop> findById(@NonNull Long id);
 
-    @Query("SELECT s FROM Shop s")
+    @Query("SELECT shop FROM Shop shop")
+    @NonNull
     List<Shop> findAll();
 
     @Transactional
     @Modifying
-    @Query("DELETE FROM Shop s WHERE s.id = ?1")
+    @Query("DELETE FROM Shop shop WHERE shop.id = ?1")
     void deleteShop(Long id);
 
 
